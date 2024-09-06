@@ -1,0 +1,9 @@
+/home/u/1-4/dir/CMakeFiles/my_static_lib.dir
+/home/u/1-4/dir/CMakeFiles/my_dynamic_lib.dir
+/home/u/1-4/dir/CMakeFiles/b.dir
+/home/u/1-4/dir/CMakeFiles/edit_cache.dir
+/home/u/1-4/dir/CMakeFiles/rebuild_cache.dir
+/home/u/1-4/dir/CMakeFiles/list_install_components.dir
+/home/u/1-4/dir/CMakeFiles/install.dir
+/home/u/1-4/dir/CMakeFiles/install/local.dir
+/home/u/1-4/dir/CMakeFiles/install/strip.dir

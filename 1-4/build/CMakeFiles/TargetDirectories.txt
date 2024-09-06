@@ -1,0 +1,3 @@
+/home/u/1-4/build/CMakeFiles/b.dir
+/home/u/1-4/build/CMakeFiles/edit_cache.dir
+/home/u/1-4/build/CMakeFiles/rebuild_cache.dir

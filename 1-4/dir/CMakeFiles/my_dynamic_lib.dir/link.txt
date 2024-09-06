@@ -1,0 +1,1 @@
+/usr/bin/cc -fPIC -shared -Wl,-soname,libmy_dynamic_lib.so -o libmy_dynamic_lib.so CMakeFiles/my_dynamic_lib.dir/main.c.o
