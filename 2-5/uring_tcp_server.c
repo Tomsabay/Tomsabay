@@ -121,15 +121,15 @@ int main(int argc, char *argv[]) {
 
 	while (1) {
 
-		io_uring_submit(&ring);
+		io_uring_submit(&ring);//初始化的文件递交到内核，内核检测到完成就放到cqe，此步也是异步
 
 
-		struct io_uring_cqe *cqe;
-		io_uring_wait_cqe(&ring, &cqe);
+		// struct io_uring_cqe *cqe;
+		// io_uring_wait_cqe(&ring, &cqe);此为阻塞接受一个事件的操作
 
 		struct io_uring_cqe *cqes[128];
 		int nready = io_uring_peek_batch_cqe(&ring, cqes, 128);  // epoll_wait
-
+		//该函数非阻塞，得到直接返回
 		int i = 0;
 		for (i = 0;i < nready;i ++) {
 
@@ -140,7 +140,7 @@ int main(int argc, char *argv[]) {
 			if (result.event == EVENT_ACCEPT) {
 
 				set_event_accept(&ring, sockfd, (struct sockaddr*)&clientaddr, &len, 0);
-				//printf("set_event_accept\n"); //
+				printf("set_event_accept\n"); //
 
 				int connfd = entries->res;
 
@@ -150,17 +150,18 @@ int main(int argc, char *argv[]) {
 			} else if (result.event == EVENT_READ) {  //
 
 				int ret = entries->res;
-				//printf("set_event_recv ret: %d, %s\n", ret, buffer); //
+				printf("set_event_recv ret: %d, %s\n", ret, buffer); //
 
 				if (ret == 0) {
 					close(result.fd);
 				} else if (ret > 0) {
-					set_event_send(&ring, result.fd, buffer, ret, 0);
+					set_event_send(&ring, result.fd, buffer, ret+6, 0);
 				}
-			}  else if (result.event == EVENT_WRITE) {  //
+			}  else if (result.event == EVENT_WRITE) {
+  //
 
 				int ret = entries->res;
-				//printf("set_event_send ret: %d, %s\n", ret, buffer);
+				printf("set_event_send ret: %d, %s\n", ret, buffer);
 
 				set_event_recv(&ring, result.fd, buffer, BUFFER_LENGTH, 0);
 				

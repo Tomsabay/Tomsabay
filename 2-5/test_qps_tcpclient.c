@@ -86,7 +86,7 @@ int send_recv_tcppkt(int fd) {
 	char wbuffer[WBUFFER_LENGTH] = {0};
 	int i = 0;
 
-	for (i = 0;i < 8;i ++) {
+	for (i = 0;i < 16;i ++) {
 		strcpy(wbuffer + i * strlen(TEST_MESSAGE), TEST_MESSAGE);
 	}
 

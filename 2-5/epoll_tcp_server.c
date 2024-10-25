@@ -206,10 +206,10 @@ int main() {
 			if (events[i].events & EPOLLIN) { //
 
 				int count = connlist[connfd].recv_t.recv_callback(connfd);
-				//printf("recv count: %d <-- buffer: %s\n", count, connlist[connfd].rbuffer);
+				printf("recv count: %d <-- buffer: %s\n", count, connlist[connfd].rbuffer);
 
 			} else if (events[i].events & EPOLLOUT) { 
-				//printf("send --> buffer: %s\n",  connlist[connfd].wbuffer);
+				printf("send --> buffer: %s\n",  connlist[connfd].wbuffer);
 				
 				int count = connlist[connfd].send_callback(connfd);
 			}

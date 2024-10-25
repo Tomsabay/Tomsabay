@@ -1,0 +1,6 @@
+[submodule "2.1.1-multi-io"]
+	path = 2.1.1-multi-io
+	url = http://gitlab.0voice.com/2310_vip/2.1.1-multi-io.git
+[submodule "NtyCo"]
+	path = NtyCo
+	url = https://github.com/wangbojing/NtyCo.git
